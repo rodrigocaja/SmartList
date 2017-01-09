@@ -1,5 +1,6 @@
 package com.smartdays.smartlist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -82,7 +83,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_newList) {
-            // Handle the camera action
+            NovaListaFragment fragment = new NovaListaFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, fragment);
+            transaction.commit();
         } else if (id == R.id.nav_savedLists) {
 
         } else if (id == R.id.nav_newShop) {

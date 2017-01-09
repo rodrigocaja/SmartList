@@ -57,7 +57,7 @@
 	<string name="navigation_drawer_open">Abrir menu</string>
     <string name="navigation_drawer_close">Fechar menu</string>
     <string name="action_settings">Configurações</string>
-    <string name="hello_blank_fragment"></string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menuHelp">Ajuda</string>
     <string name="menuTutorial">Passo a passo</string>
 </resources>
