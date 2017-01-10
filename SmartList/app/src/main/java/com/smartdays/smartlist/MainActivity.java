@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity
     int closeCount = 0;
     NavigationView navigationView = null;
     Toolbar toolbar = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
