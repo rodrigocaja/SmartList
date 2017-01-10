@@ -61,4 +61,6 @@
     <string name="menuHelp">Ajuda</string>
     <string name="menuTutorial">Passo a passo</string>
     <string name="LeavingAppWarning">Pressione o voltar novamente para fechar o aplicativo</string>
+    <string name="actionDelete">Excluir</string>
+    <string name="optionsDesc">Opções</string>
 </resources>

@@ -7,11 +7,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
@@ -22,6 +28,7 @@ import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 public class VerListaFragment extends Fragment {
     private SQLiteDatabase db = null;
     private SimpleCursorAdapter adt = null;
+    private ArrayList<String> mArrayList = new ArrayList<String>();
 
     public VerListaFragment() {
         // Required empty public constructor
@@ -50,6 +57,20 @@ public class VerListaFragment extends Fragment {
 
             ltwListasSalvas.setAdapter(adt);
 
+            mArrayList.clear();
+            for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+                // The Cursor is now set to the right position
+                mArrayList.add(cursor.getString(cursor.getColumnIndex("_id")));
+            }
+
+            /*
+            int i;
+            for (i = 0; i < mArrayList.size(); i++) {
+                Log.v("DEBUG", mArrayList.get(i));
+            }*/
+
+            //Registrando para menu de contexto
+            registerForContextMenu(ltwListasSalvas);
             /*
             //Seleção de registro no listview
             ltwListasSalvas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -70,4 +91,37 @@ public class VerListaFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+        if (v.getId() == R.id.ltwListasSalvas) {
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+            menu.setHeaderTitle(getResources().getString(R.string.optionsDesc));
+            menu.add(0, 1, 1, getResources().getString(R.string.actionDelete));
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        //int menuItemIndex = item.getItemId();
+        String chave = mArrayList.get(info.position);
+
+        deleteList(chave);
+        return true;
+    }
+
+    public void deleteList(String id) {
+        db.delete("lista", "_id = " + id, null);
+
+        Cursor cursor = db.rawQuery("select lista._id as _id, lista.nome as listanome, (select count(distinct lista_item.produto) " +
+                "from lista_item where lista._id = lista_item.lista) as qtdeitens from lista;", null);
+        adt.changeCursor(cursor);
+
+        mArrayList.clear();
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            // The Cursor is now set to the right position
+            mArrayList.add(cursor.getString(cursor.getColumnIndex("_id")));
+        }
+        Log.v("DEBUG", id);
+    }
 }

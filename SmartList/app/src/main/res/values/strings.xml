@@ -62,4 +62,6 @@
     <string name="menuHelp">Help</string>
     <string name="menuTutorial">Step by Step</string>
     <string name="LeavingAppWarning">Press back again to leave</string>
+    <string name="actionDelete">Delete</string>
+    <string name="optionsDesc">Options</string>
 </resources>
