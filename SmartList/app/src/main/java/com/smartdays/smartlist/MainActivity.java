@@ -1,6 +1,7 @@
 package com.smartdays.smartlist;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private SQLiteDatabase db = null;
 
     public static final String TAG = "MainActivity";
 
@@ -49,6 +51,11 @@ public class MainActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        db = openOrCreateDatabase("smartlistapp.db", SQLiteDatabase.CREATE_IF_NECESSARY, null);
+
+        DbHandle dbHandle = new DbHandle();
+        dbHandle.criaDB(db);
     }
 
     @Override

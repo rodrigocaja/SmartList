@@ -40,8 +40,4 @@ public class NovaListaFragment extends Fragment {
         return rootView;
     }
 
-    public void onBackPressed(){
-
-    }
-
 }
