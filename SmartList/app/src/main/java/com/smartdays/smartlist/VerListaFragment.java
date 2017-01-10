@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -112,23 +111,7 @@ public class VerListaFragment extends Fragment {
     }
 
     public void deleteList(String id) {
-        if (db.delete("lista", "_id = ?", new String[]{id}) > 0){
-            db.delete("lista_item", "lista = ?", new String[]{id});
-
-            //Log do sistema
-            LogSis log = new LogSis();
-            String tabela = "lista_item";
-            String acao = "Apagou todos os itens da lista " + id;
-            log.gravaLog(db, tabela, acao);
-
-            tabela = "lista";
-            acao = "Apagou a lista " + id;
-            log.gravaLog(db, tabela, acao);
-
-            Toast.makeText(getContext(), R.string.ContextConfirmListDelete, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getContext(), R.string.ContextConfirmErrorListDelete, Toast.LENGTH_SHORT).show();
-        }
+        db.delete("lista", "_id = " + id, null);
 
         Cursor cursor = db.rawQuery("select lista._id as _id, lista.nome as listanome, (select count(distinct lista_item.produto) " +
                 "from lista_item where lista._id = lista_item.lista) as qtdeitens from lista;", null);
