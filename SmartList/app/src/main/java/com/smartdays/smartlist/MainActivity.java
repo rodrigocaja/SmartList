@@ -51,8 +51,9 @@ public class MainActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        String DB_PATH = "/data/data/" + getBaseContext().getPackageName() + "/databases/smartlistapp.db";
 
-        db = openOrCreateDatabase("smartlistapp.db", SQLiteDatabase.CREATE_IF_NECESSARY, null);
+        db = openOrCreateDatabase(DB_PATH, SQLiteDatabase.CREATE_IF_NECESSARY, null);
 
         DbHandle dbHandle = new DbHandle();
         dbHandle.criaDB(db);

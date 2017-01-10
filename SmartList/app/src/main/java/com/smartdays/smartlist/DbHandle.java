@@ -1,6 +1,7 @@
 package com.smartdays.smartlist;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /**
  * Created by Caja on 10/01/2017.
@@ -76,6 +77,7 @@ public class DbHandle {
         db.execSQL(compra_item);
         db.execSQL(lista_item);
         db.execSQL(log_sis);
+        Log.v("Create", "Worked");
         //db.execSQL(ordem_compra_produto);
     }
 
