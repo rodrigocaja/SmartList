@@ -113,8 +113,9 @@ public class MainActivity extends AppCompatActivity
             VerListaFragment fragment = new VerListaFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, fragment);
-            transaction.addToBackStack(null);
+            transaction.addToBackStack("teste");
             transaction.commit();
+
         } else if (id == R.id.nav_newShop) {
 
         } else if (id == R.id.nav_openShop) {
