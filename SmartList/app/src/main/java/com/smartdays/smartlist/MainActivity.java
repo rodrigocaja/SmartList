@@ -124,4 +124,12 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void callListaItemFragment(Bundle args){
+        ListaItemFragment fragment = new ListaItemFragment();
+        fragment.setArguments(args);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }

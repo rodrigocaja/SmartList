@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="Produto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/txtProd"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="Categoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:id="@+id/txtCat"
+        android:layout_below="@+id/txtProd"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="40dp"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:text="ID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtCat"
+        android:layout_toEndOf="@+id/txtCat"
+        android:layout_marginStart="15dp"
+        android:id="@+id/txvIDProd"
+        android:visibility="gone"
+        android:layout_toRightOf="@+id/txtCat"
+        android:layout_marginLeft="15dp" />
+
+</RelativeLayout>

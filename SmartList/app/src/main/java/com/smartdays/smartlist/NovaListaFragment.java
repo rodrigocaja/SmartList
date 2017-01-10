@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,6 +75,13 @@ public class NovaListaFragment extends Fragment {
 
                         startActivity(it);
                         */
+                        Bundle args = new Bundle();
+                        args.putString("idLista", retornoCursor.getString(retornoCursor.getColumnIndex("seq")));
+                        args.putString("nomeLista", txtListName.getText().toString());
+
+                        MainActivity activity = (MainActivity) getActivity();
+                        activity.callListaItemFragment(args);
+
                     } else {
                         Toast.makeText(getContext(), getResources().getString(R.string.notifyErrorListSaved), Toast.LENGTH_SHORT).show();
                     }
