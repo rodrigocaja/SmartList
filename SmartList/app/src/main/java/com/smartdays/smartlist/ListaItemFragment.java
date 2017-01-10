@@ -1,10 +1,12 @@
 package com.smartdays.smartlist;
 
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 
 /**
@@ -35,7 +39,12 @@ public class ListaItemFragment extends Fragment {
 
         if (rootView != null) {
             //db = openOrCreateDatabase("smartlist.db", SQLiteDatabase.CREATE_IF_NECESSARY, null);
+            Context c = getContext().getApplicationContext();
 
+            String DB_PATH = c.getDatabasePath("smartlistapp.db").getPath();
+
+            Log.v("FullContext", DB_PATH);
+            db = openOrCreateDatabase(DB_PATH, null);
 
 
             //Button btnAddIt = (Button) rootView.findViewById(R.id.btnAddIt);
@@ -97,5 +106,6 @@ public class ListaItemFragment extends Fragment {
 
         return rootView;
     }
+
 
 }
