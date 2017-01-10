@@ -50,12 +50,11 @@ public class NovaListaFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     txtListName = (EditText) rootView.findViewById(R.id.txtListName);
+
                     Context c = getContext().getApplicationContext();
-
                     String DB_PATH = c.getDatabasePath("smartlistapp.db").getPath();
-
-                    Log.v("FullContext", DB_PATH);
                     db = openOrCreateDatabase(DB_PATH, null);
+
                     ContentValues ctv = new ContentValues();
                     ctv.put("nome", txtListName.getText().toString());
 

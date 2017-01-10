@@ -110,7 +110,11 @@ public class MainActivity extends AppCompatActivity
             transaction.addToBackStack(null);
             transaction.commit();
         } else if (id == R.id.nav_savedLists) {
-
+            VerListaFragment fragment = new VerListaFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         } else if (id == R.id.nav_newShop) {
 
         } else if (id == R.id.nav_openShop) {
