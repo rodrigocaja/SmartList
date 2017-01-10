@@ -34,7 +34,7 @@ public class NovaListaFragment extends Fragment {
 
     @Override
     public void onResume() {
-        Log.v("DEBUG", "Resume of NovaListaFragment");
+        //Log.v("DEBUG", "Resume of NovaListaFragment");
         super.onResume();
     }
 
@@ -63,7 +63,6 @@ public class NovaListaFragment extends Fragment {
                         Toast.makeText(getContext(), getResources().getString(R.string.notifyListSaved), Toast.LENGTH_SHORT).show();
 
                         Cursor retornoCursor = db.rawQuery("SELECT seq FROM sqlite_sequence WHERE name=?", new String[] {"lista"});
-                        //int last = (retornoCursor.moveToFirst() ? retornoCursor.getInt(0) : 0);
 
                         retornoCursor.moveToFirst();
 
@@ -72,15 +71,7 @@ public class NovaListaFragment extends Fragment {
                         String tabela = "lista";
                         String acao = "Inseriu o registro no. " + retornoCursor.getString(retornoCursor.getColumnIndex("seq"));
                         log.gravaLog(db, tabela, acao);
-                        Log.v("INsert", acao);
 
-                        /*
-                        Intent it = new Intent(getBaseContext(), ListaItemActivity.class);
-                        it.putExtra("idLista", retornoCursor.getString(retornoCursor.getColumnIndex("seq")));
-                        it.putExtra("nomeLista", txtListName.getText().toString());
-
-                        startActivity(it);
-                        */
                         Bundle args = new Bundle();
                         args.putString("idLista", retornoCursor.getString(retornoCursor.getColumnIndex("seq")));
                         args.putString("nomeLista", txtListName.getText().toString());
