@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity
         MainFragment fragment = new MainFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack("nivel0");
         transaction.commit();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -59,13 +60,14 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            int count = getFragmentManager().getBackStackEntryCount();
+            int count = getSupportFragmentManager().getBackStackEntryCount();
             Log.v("DEBUG", String.valueOf(count));
+            String nivelAtual = getSupportFragmentManager().getBackStackEntryAt(count-1).getName();
             if (count == 0) {
                 super.onBackPressed();
 
             } else {
-                getFragmentManager().popBackStack();
+                getSupportFragmentManager().popBackStack("nivel0", 	0);
             }
         }
     }
