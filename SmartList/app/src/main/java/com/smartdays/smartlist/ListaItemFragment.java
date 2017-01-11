@@ -97,20 +97,6 @@ public class ListaItemFragment extends Fragment {
 
             //Registrando para o menu de contexto
             registerForContextMenu(ltwItensLista);
-
-            /*
-            ltwItensLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Cursor retornoCursor = (Cursor) adt.getItem(i);
-                    Intent it = new Intent(getBaseContext(), ApagarItemListaActivity.class);
-                    it.putExtra("listaId", txvIdLista.getText().toString());
-                    it.putExtra("produto_id", retornoCursor.getString(retornoCursor.getColumnIndex("_id")));
-                    it.putExtra("produto_nome", retornoCursor.getString(retornoCursor.getColumnIndex("ProdDesc")));
-
-                    startActivity(it);
-                }
-            });*/
         }
 
         return rootView;
@@ -128,7 +114,6 @@ public class ListaItemFragment extends Fragment {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        //int menuItemIndex = item.getItemId();
         String chave = mArrayList.get(info.position);
         Log.v("DEBUG", chave);
         deleteItem(chave);

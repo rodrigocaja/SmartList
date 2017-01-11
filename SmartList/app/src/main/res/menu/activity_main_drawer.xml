@@ -8,11 +8,10 @@
             android:title="@string/btnNewList" />
         <item
             android:id="@+id/nav_savedLists"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@android:drawable/ic_menu_sort_by_size"
             android:title="@string/btnOpenLists" />
         <item
             android:id="@+id/nav_newShop"
-            android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/btnNewShop" />
         <item
             android:id="@+id/nav_openShop"
