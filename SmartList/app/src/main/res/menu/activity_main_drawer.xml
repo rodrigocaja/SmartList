@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_newList"
-            android:icon="@drawable/newList"
+            android:icon="@drawable/new_list"
             android:title="@string/btnNewList" />
         <item
             android:id="@+id/nav_savedLists"
@@ -16,7 +16,7 @@
             android:icon="@drawable/shop_basket" />
         <item
             android:id="@+id/nav_openShop"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/previous_shop"
             android:title="@string/btnPreviousShop" />
     </group>
 
