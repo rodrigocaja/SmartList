@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             int count = getFragmentManager().getBackStackEntryCount();
-
+            Log.v("DEBUG", String.valueOf(count));
             if (count == 0) {
                 super.onBackPressed();
             } else {
@@ -107,13 +107,13 @@ public class MainActivity extends AppCompatActivity
             NovaListaFragment fragment = new NovaListaFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, fragment);
-            transaction.addToBackStack(null);
+            transaction.addToBackStack("nivel1");
             transaction.commit();
         } else if (id == R.id.nav_savedLists) {
             VerListaFragment fragment = new VerListaFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, fragment);
-            transaction.addToBackStack(null);
+            transaction.addToBackStack("nivel1");
             transaction.commit();
         } else if (id == R.id.nav_newShop) {
 
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity
         fragment.setArguments(args);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
+        transaction.addToBackStack("nivel2");
         transaction.commit();
     }
 }
