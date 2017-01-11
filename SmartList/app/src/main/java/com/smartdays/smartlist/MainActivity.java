@@ -2,6 +2,7 @@ package com.smartdays.smartlist;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
@@ -11,6 +12,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity
         MainFragment fragment = new MainFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack("nivel0");
+        transaction.addToBackStack("main");
         transaction.commit();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -62,12 +65,13 @@ public class MainActivity extends AppCompatActivity
         } else {
             int count = getSupportFragmentManager().getBackStackEntryCount();
             Log.v("DEBUG", String.valueOf(count));
-            String nivelAtual = getSupportFragmentManager().getBackStackEntryAt(count-1).getName();
-            if (count == 0) {
-                super.onBackPressed();
-
+            //String nivelAtual = getSupportFragmentManager().getBackStackEntryAt(count-1).getName();
+            if (count == 1) {
+                //super.onBackPressed();
+                finish();
             } else {
-                getSupportFragmentManager().popBackStack("nivel0", 	0);
+                getSupportFragmentManager().popBackStack();
+
             }
         }
     }
@@ -99,18 +103,18 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        String nivel = null;
 
         if (id == R.id.nav_newList) {
+            nivel = "novaLista";
             NovaListaFragment fragment = new NovaListaFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container, fragment);
-            transaction.addToBackStack("nivel1");
-            transaction.commit();
+
         } else if (id == R.id.nav_savedLists) {
+            nivel = "verLista";
             VerListaFragment fragment = new VerListaFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, fragment);
-            transaction.addToBackStack("nivel1");
+            transaction.addToBackStack(nivel);
             transaction.commit();
         } else if (id == R.id.nav_newShop) {
 
@@ -131,7 +135,18 @@ public class MainActivity extends AppCompatActivity
         fragment.setArguments(args);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack("nivel2");
+        transaction.addToBackStack("listaItem");
         transaction.commit();
+    }
+
+    public void fragmentsCallInterface (String nivel, Fragment fragment) {
+        if (getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount()-1).getName().equals(nivel)) {
+            Log.v("BACKSTACK_CONTROL", "Same ID");
+        } else {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, fragment);
+            transaction.addToBackStack(nivel);
+            transaction.commit();
+        }
     }
 }
