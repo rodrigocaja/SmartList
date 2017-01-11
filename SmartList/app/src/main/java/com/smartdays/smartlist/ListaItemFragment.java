@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -39,7 +40,6 @@ public class ListaItemFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_lista_item, container, false);
 
         if (rootView != null) {
-            //db = openOrCreateDatabase("smartlist.db", SQLiteDatabase.CREATE_IF_NECESSARY, null);
             Context c = getContext().getApplicationContext();
 
             String DB_PATH = c.getDatabasePath("smartlistapp.db").getPath();
@@ -48,7 +48,7 @@ public class ListaItemFragment extends Fragment {
             db = openOrCreateDatabase(DB_PATH, null);
 
 
-            ImageView btnAddIt = (ImageView) rootView.findViewById(R.id.btnAddIt);
+            ImageButton btnAddIt = (ImageButton) rootView.findViewById(R.id.btnAddIt);
             final TextView txvListaNome = (TextView) rootView.findViewById(R.id.txvListaNome);
             final TextView txvIdLista = (TextView) rootView.findViewById(R.id.txvIdLista);
 
@@ -72,15 +72,16 @@ public class ListaItemFragment extends Fragment {
             btnAddIt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    /*
+                    Log.v("DEBUG", "ponto");
+
                     Bundle args = new Bundle();
 
                     args.putString("listaId", txvIdLista.getText().toString());
                     args.putString("nomeLista", txvListaNome.getText().toString());
 
-                    MainActivity activity = new MainActivity();
+                    MainActivity activity = (MainActivity) getActivity();
                     activity.callAdicionarProdutosFragment(args);
-                    */
+
                 }
             });
 

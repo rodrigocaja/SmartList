@@ -37,16 +37,15 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="14dp" />
 
-    <ImageView
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_input_add"
         android:layout_alignTop="@+id/txvListaNome"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="24dp"
-        android:layout_marginEnd="24dp"
         android:id="@+id/btnAddIt"
-        android:contentDescription="@string/txtAddProductTitle" />
+        android:contentDescription="@string/txtAddProductTitle"
+        android:background="@android:color/transparent" />
 
 </RelativeLayout>

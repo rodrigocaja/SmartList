@@ -139,8 +139,8 @@ public class MainActivity extends AppCompatActivity
         fragmentsCallInterface(nivel, fragment);
     }
 
-    public void callAdicionarProdutosFragment (Bundle args) {
-        String nivel = "adicionarProdutos";
+    public void callAdicionarProdutosFragment(Bundle args) {
+        String nivel = "teste";
         AdicionarProdutosFragment fragment = new AdicionarProdutosFragment();
         fragment.setArguments(args);
 
