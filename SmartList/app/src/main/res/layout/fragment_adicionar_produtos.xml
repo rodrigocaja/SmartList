@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.smartdays.smartlist.AdicionarProdutosFragment">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/txtProductName"
+        android:ems="10"
+        android:layout_below="@+id/txtAddProd"
+        android:layout_alignParentStart="true"
+        android:id="@+id/txtProdName" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/txtSearchCategory"
+        android:ems="10"
+        android:layout_marginTop="15dp"
+        android:id="@+id/txtCatName"
+        android:layout_below="@+id/txtProdName"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/txtAddProductTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtAddProd"
+        android:textSize="18sp"
+        android:layout_marginTop="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ltwProdutos"
+        android:layout_below="@+id/txtCatName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp" />
+
+</RelativeLayout>

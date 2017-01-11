@@ -139,6 +139,14 @@ public class MainActivity extends AppCompatActivity
         fragmentsCallInterface(nivel, fragment);
     }
 
+    public void callAdicionarProdutosFragment (Bundle args) {
+        String nivel = "adicionarProdutos";
+        AdicionarProdutosFragment fragment = new AdicionarProdutosFragment();
+        fragment.setArguments(args);
+
+        fragmentsCallInterface(nivel, fragment);
+    }
+
     public void fragmentsCallInterface (String nivel, Fragment fragment) {
         if (getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount()-1).getName().equals(nivel)) {
             Log.v("BACKSTACK_CONTROL", "Same ID");

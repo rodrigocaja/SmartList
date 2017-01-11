@@ -73,11 +73,13 @@ public class ListaItemFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     /*
-                    Intent itCall = new Intent(getBaseContext(), AdicionarProdutosActivity.class);
-                    itCall.putExtra("listaId", txvIdLista.getText().toString());
-                    itCall.putExtra("nomeLista", txvListaNome.getText().toString());
+                    Bundle args = new Bundle();
 
-                    startActivity(itCall);
+                    args.putString("listaId", txvIdLista.getText().toString());
+                    args.putString("nomeLista", txvListaNome.getText().toString());
+
+                    MainActivity activity = new MainActivity();
+                    activity.callAdicionarProdutosFragment(args);
                     */
                 }
             });
