@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -47,7 +48,7 @@ public class ListaItemFragment extends Fragment {
             db = openOrCreateDatabase(DB_PATH, null);
 
 
-            //Button btnAddIt = (Button) rootView.findViewById(R.id.btnAddIt);
+            ImageView btnAddIt = (ImageView) rootView.findViewById(R.id.btnAddIt);
             final TextView txvListaNome = (TextView) rootView.findViewById(R.id.txvListaNome);
             final TextView txvIdLista = (TextView) rootView.findViewById(R.id.txvIdLista);
 
@@ -67,29 +68,21 @@ public class ListaItemFragment extends Fragment {
             ListView ltwItensLista = (ListView) rootView.findViewById(R.id.ltwItensLista);
             ltwItensLista.setAdapter(adt);
 
-            /*
-            final ImageView imgDeleteList = (ImageView) findViewById(R.id.imgDeleteList);
-            imgDeleteList.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent itDelete = new Intent(getBaseContext(), ApagarListaActivity.class);
-                    itDelete.putExtra("listaId", txvIdLista.getText().toString());
-                    itDelete.putExtra("nomeLista", txvListaNome.getText().toString());
-                    startActivity(itDelete);
-                }
-            });
 
             btnAddIt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    /*
                     Intent itCall = new Intent(getBaseContext(), AdicionarProdutosActivity.class);
                     itCall.putExtra("listaId", txvIdLista.getText().toString());
                     itCall.putExtra("nomeLista", txvListaNome.getText().toString());
 
                     startActivity(itCall);
+                    */
                 }
             });
 
+            /*
             ltwItensLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

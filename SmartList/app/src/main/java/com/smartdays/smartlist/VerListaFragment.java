@@ -63,28 +63,24 @@ public class VerListaFragment extends Fragment {
                 mArrayList.add(cursor.getString(cursor.getColumnIndex("_id")));
             }
 
-            /*
-            int i;
-            for (i = 0; i < mArrayList.size(); i++) {
-                Log.v("DEBUG", mArrayList.get(i));
-            }*/
-
             //Registrando para menu de contexto
             registerForContextMenu(ltwListasSalvas);
-            /*
+
             //Seleção de registro no listview
             ltwListasSalvas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Cursor retornoCursor = (Cursor) adt.getItem(i);
-                    Intent it = new Intent(getBaseContext(), ListaItemActivity.class);
-                    it.putExtra("idLista", retornoCursor.getString(retornoCursor.getColumnIndex("_id")));
-                    it.putExtra("nomeLista", retornoCursor.getString(retornoCursor.getColumnIndex("listanome")));
 
-                    startActivity(it);
+                    Bundle args = new Bundle();
+                    args.putString("idLista", retornoCursor.getString(retornoCursor.getColumnIndex("_id")));
+                    args.putString("nomeLista", retornoCursor.getString(retornoCursor.getColumnIndex("listanome")));
+
+                    MainActivity activity = (MainActivity) getActivity();
+                    activity.callListaItemFragment(args);
                 }
             });
-            */
+
 
         }
 
