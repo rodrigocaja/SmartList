@@ -109,13 +109,14 @@ public class MainActivity extends AppCompatActivity
             nivel = "novaLista";
             NovaListaFragment fragment = new NovaListaFragment();
 
+            fragmentsCallInterface(nivel, fragment);
+
         } else if (id == R.id.nav_savedLists) {
             nivel = "verLista";
             VerListaFragment fragment = new VerListaFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container, fragment);
-            transaction.addToBackStack(nivel);
-            transaction.commit();
+
+            fragmentsCallInterface(nivel, fragment);
+
         } else if (id == R.id.nav_newShop) {
 
         } else if (id == R.id.nav_openShop) {
@@ -131,12 +132,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void callListaItemFragment(Bundle args){
+        String nivel = "listaItem";
         ListaItemFragment fragment = new ListaItemFragment();
         fragment.setArguments(args);
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack("listaItem");
-        transaction.commit();
+
+        fragmentsCallInterface(nivel, fragment);
     }
 
     public void fragmentsCallInterface (String nivel, Fragment fragment) {
