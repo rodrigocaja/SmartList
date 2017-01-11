@@ -7,15 +7,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
@@ -26,6 +31,7 @@ import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 public class ListaItemFragment extends Fragment {
     private SQLiteDatabase db = null;
     private SimpleCursorAdapter adt = null;
+    private ArrayList<String> mArrayList = new ArrayList<String>();
 
     public ListaItemFragment() {
         // Required empty public constructor
@@ -68,11 +74,15 @@ public class ListaItemFragment extends Fragment {
             ListView ltwItensLista = (ListView) rootView.findViewById(R.id.ltwItensLista);
             ltwItensLista.setAdapter(adt);
 
+            mArrayList.clear();
+            for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+                // The Cursor is now set to the right position
+                mArrayList.add(cursor.getString(cursor.getColumnIndex("_id")));
+            }
 
             btnAddIt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.v("DEBUG", "ponto");
 
                     Bundle args = new Bundle();
 
@@ -84,6 +94,9 @@ public class ListaItemFragment extends Fragment {
 
                 }
             });
+
+            //Registrando para o menu de contexto
+            registerForContextMenu(ltwItensLista);
 
             /*
             ltwItensLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -103,5 +116,40 @@ public class ListaItemFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+        if (v.getId() == R.id.ltwItensLista) {
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+            menu.setHeaderTitle(getResources().getString(R.string.optionsDesc));
+            menu.add(0, 1, 1, getResources().getString(R.string.actionDelete));
+        }
+    }
 
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        //int menuItemIndex = item.getItemId();
+        String chave = mArrayList.get(info.position);
+        Log.v("DEBUG", chave);
+        deleteItem(chave);
+        return true;
+    }
+
+    public void deleteItem(String produto) {
+
+        String[] deleteParm = new String[]{produto, getArguments().getString("idLista")};
+        db.delete("lista_item", "produto = ? and lista = ?", deleteParm);
+
+        String[] busca = new String[]{getArguments().getString("idLista")};
+        Cursor cursor = db.rawQuery("select lista_item.produto as _id, produto.produto_desc as ProdDesc, '' as categ from lista_item inner join produto on lista_item.produto = produto._id" +
+                " where lista_item.lista = ? order by lista_item._id",busca);
+        adt.changeCursor(cursor);
+
+        mArrayList.clear();
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            // The Cursor is now set to the right position
+            mArrayList.add(cursor.getString(cursor.getColumnIndex("_id")));
+        }
+        Log.v("DEBUG", produto);
+    }
 }
