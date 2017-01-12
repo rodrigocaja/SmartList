@@ -194,6 +194,8 @@ public class MainActivity extends AppCompatActivity
         ItensCompraFragment fragment = new ItensCompraFragment();
         fragment.setArguments(args);
 
+
+
         fragmentsCallInterface(nivel, fragment);
 
     }

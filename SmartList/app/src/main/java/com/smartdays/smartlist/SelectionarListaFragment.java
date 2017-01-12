@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -118,6 +119,8 @@ public class SelectionarListaFragment extends Fragment {
                         String tabela = "compra";
                         String acao = "Inseriu o registro no. " + seqCursor.getString(seqCursor.getColumnIndex("seq"));
                         log.gravaLog(db, tabela, acao);
+
+                        Log.v("ARGS_CHECK_SelList", args.getString("idCompra"));
 
                         MainActivity activity = (MainActivity) getActivity();
                         activity.callItensCompraFragment(args);
