@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.smartdays.smartlist.ListaCompraFragment">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="53dp"
+        android:layout_below="@+id/txvSeqCompra"
+        android:layout_alignParentStart="true"
+        android:id="@+id/ltwItensPCompra" />
+
+    <TextView
+        android:text="@string/txtDescTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txvSeqCompra"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/txtDescTotal" />
+
+    <TextView
+        android:text="9,99"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtDescTotal"
+        android:layout_toEndOf="@+id/txtDescTotal"
+        android:layout_marginStart="14dp"
+        android:id="@+id/txtTotalL"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/icon_market_cart"
+        android:id="@+id/imgCart"
+        android:contentDescription="@string/btnMarketCart"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="68dp" />
+
+    <TextView
+        android:text="@string/infSeqShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvSeqCompra"
+        android:textSize="18sp"
+        android:layout_marginTop="19dp"
+        android:layout_alignTop="@+id/imgCart"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

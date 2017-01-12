@@ -64,4 +64,5 @@
     <string name="LeavingAppWarning">Press back again to leave</string>
     <string name="actionDelete">Delete</string>
     <string name="optionsDesc">Options</string>
+    <string name="btnMarketCart">Market cart</string>
 </resources>

@@ -63,4 +63,5 @@
     <string name="LeavingAppWarning">Pressione o voltar novamente para fechar o aplicativo</string>
     <string name="actionDelete">Excluir</string>
     <string name="optionsDesc">Opções</string>
+    <string name="btnMarketCart">Carrinho de compras</string>
 </resources>

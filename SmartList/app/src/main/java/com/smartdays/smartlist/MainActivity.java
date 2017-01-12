@@ -186,4 +186,11 @@ public class MainActivity extends AppCompatActivity
         fragmentsCallInterface(nivel, fragment);
     }
 
+    public void callListaCompraFragment(Bundle args) {
+        String nivel = "listaCompraFragment";
+        ListaCompraFragment fragment = new ListaCompraFragment();
+        fragment.setArguments(args);
+
+        fragmentsCallInterface(nivel, fragment);
+    }
 }

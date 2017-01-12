@@ -68,15 +68,17 @@ public class VerComprasFragment extends Fragment {
             ltwCompras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    /*Cursor updateCursor = (Cursor) adt.getItem(i);
-                    Intent it = new Intent(getBaseContext(), CompraSequencialActivity.class);
+                    Cursor updateCursor = (Cursor) adt.getItem(i);
+                    Bundle args = new Bundle();
 
-                    it.putExtra("idCompra", updateCursor.getString(updateCursor.getColumnIndex("_id")));
-                    it.putExtra("idLista", updateCursor.getString(updateCursor.getColumnIndex("listaC")));
-                    it.putExtra("idSuperMercado", "1");
-                    it.putExtra("modo_compra", updateCursor.getString(updateCursor.getColumnIndex("modo_compra")));
 
-                    startActivity(it);*/
+                    args.putString("idCompra", updateCursor.getString(updateCursor.getColumnIndex("_id")));
+                    args.putString("idLista", updateCursor.getString(updateCursor.getColumnIndex("listaC")));
+                    args.putString("idSuperMercado", "1");
+                    args.putString("modo_compra", updateCursor.getString(updateCursor.getColumnIndex("modo_compra")));
+
+                    MainActivity activity = (MainActivity) getActivity();
+                    activity.callListaCompraFragment(args);
                 }
             });
 
