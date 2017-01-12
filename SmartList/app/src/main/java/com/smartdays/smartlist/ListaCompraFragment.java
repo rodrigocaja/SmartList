@@ -105,14 +105,17 @@ public class ListaCompraFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Cursor retornoCursor = (Cursor) adt.getItem(i);
-                    /*Intent it = new Intent(getBaseContext(), InserirItemCartActivity.class);
-                    it.putExtra("compraID", callIT.getStringExtra("idCompra"));
-                    it.putExtra("idProduto", retornoCursor.getString(retornoCursor.getColumnIndex("_id")));
-                    it.putExtra("nomeProduto", retornoCursor.getString(retornoCursor.getColumnIndex("ProdDesc")));
-                    it.putExtra("listaID", callIT.getStringExtra("idLista"));
-                    it.putExtra("modo_compra", tipocompra);
 
-                    startActivity(it);*/
+                    Bundle args = new Bundle();
+
+                    args.putString("compraID", getArguments().getString("idCompra"));
+                    args.putString("idProduto", retornoCursor.getString(retornoCursor.getColumnIndex("_id")));
+                    args.putString("nomeProduto", retornoCursor.getString(retornoCursor.getColumnIndex("ProdDesc")));
+                    args.putString("listaID", getArguments().getString("idLista"));
+                    args.putString("modo_compra", tipocompra);
+
+                    MainActivity activity = (MainActivity) getActivity();
+                    activity.callInserirItemCartFragment(args);
                 }
             });
         }

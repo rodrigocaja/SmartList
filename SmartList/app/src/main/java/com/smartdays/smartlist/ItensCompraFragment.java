@@ -43,7 +43,6 @@ public class ItensCompraFragment extends Fragment {
 
             db = openOrCreateDatabase(DB_PATH, null);
 
-            /*
             String[] busca = new String[]{getArguments().getString("compraID")};
             final Cursor cursor = db.rawQuery("select compra_item.produto as _id, produto.produto_desc as ProdDesc, '' as categ from compra_item inner join produto on compra_item.produto = produto._id" +
                     " where compra_item.compra = ? group by compra_item.produto order by compra_item._id",busca);
@@ -79,7 +78,7 @@ public class ItensCompraFragment extends Fragment {
                     args.putString("listaID", getArguments().getString("listaID"));
 
                 }
-            });*/
+            });
         }
 
         return rootView;

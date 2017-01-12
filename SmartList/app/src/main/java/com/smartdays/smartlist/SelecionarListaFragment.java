@@ -123,7 +123,7 @@ public class SelecionarListaFragment extends Fragment {
                         Log.v("ARGS_CHECK_SelList", args.getString("idCompra"));
 
                         MainActivity activity = (MainActivity) getActivity();
-                        activity.callItensCompraFragment(args);
+                        activity.callListaCompraFragment(args);
                     } else {
                         Toast.makeText(getContext(), R.string.notifyErrorShopp, Toast.LENGTH_SHORT).show();
                     }

@@ -129,6 +129,18 @@ public class InserirItemCartFragment extends Fragment {
                                 " qtde: " + txtQtde.getText().toString();
                         log.gravaLog(db, tabela, acao);
 
+
+                        String[] busca = new String[]{getArguments().getString("compraID")};
+                        Cursor totalCursor = db.rawQuery("select sum(valor_tot) as soma from compra_item where compra = ?", busca);
+                        totalCursor.moveToFirst();
+                        double total_vl = totalCursor.getDouble(totalCursor.getColumnIndex("soma"));
+                        String resultado = String.format("%.2f", total_vl);
+
+                        ContentValues updCtv = new ContentValues();
+                        updCtv.put("valor_total", resultado);
+                        db.update("compra", updCtv, "_id = ?", new String[]{getArguments().getString("compraID")});
+
+
                         Toast.makeText(getContext(), R.string.notifyCartProductAdded, Toast.LENGTH_SHORT).show();
                         getFragmentManager().popBackStack();
                     } else {
