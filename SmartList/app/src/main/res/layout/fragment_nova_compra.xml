@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.smartdays.smartlist.NovaCompraFragment">
+
+    <TextView
+        android:text="@string/infSeqShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtInfCompraSeq"
+        android:textSize="18sp"
+        android:layout_alignBottom="@+id/imgCompraSeq"
+        android:layout_alignLeft="@+id/txtInfMontarInt"
+        android:layout_alignStart="@+id/txtInfMontarInt"
+        android:layout_marginBottom="17dp" />
+
+    <TextView
+        android:text="@string/infSmartShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtInfCompraInt"
+        android:textSize="18sp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginRight="78dp"
+        android:layout_alignBottom="@+id/imgCompraInt"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:text="@string/infMakeSmartShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtInfMontarInt"
+        android:textSize="18sp"
+        android:layout_marginBottom="19dp"
+        android:layout_alignBottom="@+id/imgMontarInt"
+        android:layout_alignLeft="@+id/txtInfCompraInt"
+        android:layout_alignStart="@+id/txtInfCompraInt" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:id="@+id/imgCompraInt"
+        android:scaleType="fitStart"
+        app:srcCompat="@drawable/use_smart"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgMontarInt"
+        android:scaleType="fitStart"
+        app:srcCompat="@drawable/create_smart"
+        android:layout_below="@+id/imgCompraInt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="57dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgCompraSeq"
+        android:scaleType="fitStart"
+        app:srcCompat="@drawable/seq_list"
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/imgMontarInt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

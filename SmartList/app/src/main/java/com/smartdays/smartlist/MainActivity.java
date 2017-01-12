@@ -118,6 +118,10 @@ public class MainActivity extends AppCompatActivity
             fragmentsCallInterface(nivel, fragment);
 
         } else if (id == R.id.nav_newShop) {
+            nivel = "novaCompra";
+            NovaCompraFragment fragment = new NovaCompraFragment();
+
+            fragmentsCallInterface(nivel, fragment);
 
         } else if (id == R.id.nav_openShop) {
             nivel = "verCompras";
@@ -134,22 +138,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void callListaItemFragment(Bundle args){
-        String nivel = "listaItem";
-        ListaItemFragment fragment = new ListaItemFragment();
-        fragment.setArguments(args);
-
-        fragmentsCallInterface(nivel, fragment);
-    }
-
-    public void callAdicionarProdutosFragment(Bundle args) {
-        String nivel = "teste";
-        AdicionarProdutosFragment fragment = new AdicionarProdutosFragment();
-        fragment.setArguments(args);
-
-        fragmentsCallInterface(nivel, fragment);
-    }
-
     public void fragmentsCallInterface (String nivel, Fragment fragment) {
         if (getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount()-1).getName().equals(nivel)) {
             Log.v("BACKSTACK_CONTROL", "Same ID");
@@ -160,4 +148,29 @@ public class MainActivity extends AppCompatActivity
             transaction.commit();
         }
     }
+
+    public void callListaItemFragment(Bundle args){
+        String nivel = "listaItem";
+        ListaItemFragment fragment = new ListaItemFragment();
+        fragment.setArguments(args);
+
+        fragmentsCallInterface(nivel, fragment);
+    }
+
+    public void callAdicionarProdutosFragment(Bundle args) {
+        String nivel = "adicionarProdutos";
+        AdicionarProdutosFragment fragment = new AdicionarProdutosFragment();
+        fragment.setArguments(args);
+
+        fragmentsCallInterface(nivel, fragment);
+    }
+
+    public void callSelectionarListaFragment(Bundle args) {
+        String nivel = "selecionarLista";
+        SelectionarListaFragment fragment = new SelectionarListaFragment();
+        fragment.setArguments(args);
+
+        fragmentsCallInterface(nivel, fragment);
+    }
+
 }
