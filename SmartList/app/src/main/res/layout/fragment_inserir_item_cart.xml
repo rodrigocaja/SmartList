@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.smartdays.smartlist.InserirItemCartFragment">
+
+    <TextView
+        android:text="IDProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/txtIdProdCart"
+        android:visibility="gone"/>
+
+    <TextView
+        android:text="@string/txtDescQtde"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDescQtde"
+        android:layout_alignBaseline="@+id/txtQtde"
+        android:layout_alignBottom="@+id/txtQtde"
+        android:layout_alignStart="@+id/txvNomeProdCart"
+        android:hint="@string/HintQtde"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:id="@+id/txtEditVlrUnitDesc"
+        android:layout_below="@+id/txtQtde"
+        android:layout_alignStart="@+id/txtDescQtde"
+        android:text="@string/txtUnitPrice" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_below="@+id/txtQtde"
+        android:layout_marginTop="11dp"
+        android:id="@+id/txtEditVlrUnit"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="@string/AddToCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAddCart"
+        android:layout_below="@+id/txtEditVlrUnitDesc"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="74dp" />
+
+    <TextView
+        android:text="@string/txtTotalItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:id="@+id/txtTotalItem"
+        android:layout_below="@+id/txtEditVlrUnitDesc"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtTotalItem"
+        android:layout_toEndOf="@+id/txtTotalItem"
+        android:layout_marginStart="14dp"
+        android:id="@+id/txtVlrTotItem"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/txtQtde"
+        android:layout_below="@+id/txvNomeProdCart"
+        android:layout_alignStart="@+id/txtEditVlrUnit" />
+
+    <TextView
+        android:text="NomeProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="65dp"
+        android:id="@+id/txvNomeProdCart"
+        android:layout_marginLeft="17dp"
+        android:layout_below="@+id/txtIdProdCart"
+        android:layout_toRightOf="@+id/txtIdProdCart"
+        android:layout_toEndOf="@+id/txtIdProdCart" />
+
+</RelativeLayout>

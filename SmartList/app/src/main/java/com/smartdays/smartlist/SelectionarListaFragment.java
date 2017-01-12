@@ -119,8 +119,8 @@ public class SelectionarListaFragment extends Fragment {
                         String acao = "Inseriu o registro no. " + seqCursor.getString(seqCursor.getColumnIndex("seq"));
                         log.gravaLog(db, tabela, acao);
 
-                        //MainActivity activity = (MainActivity) getActivity();
-                        //activity.
+                        MainActivity activity = (MainActivity) getActivity();
+                        activity.callItensCompraFragment(args);
                     } else {
                         Toast.makeText(getContext(), R.string.notifyErrorShopp, Toast.LENGTH_SHORT).show();
                     }

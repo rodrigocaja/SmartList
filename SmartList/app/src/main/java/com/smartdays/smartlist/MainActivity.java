@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity
         } else {
             int count = getSupportFragmentManager().getBackStackEntryCount();
             String fragmentName = getSupportFragmentManager().getBackStackEntryAt(count-1).getName();
-            Log.v("DEBUG", String.valueOf(count));
-            Log.v("DEBUG",fragmentName);
+            //Log.v("DEBUG", String.valueOf(count));
+            //Log.v("DEBUG",fragmentName);
 
 
             Resources res = getResources();

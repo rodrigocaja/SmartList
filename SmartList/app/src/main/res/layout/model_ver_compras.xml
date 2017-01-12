@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
-    <TextView
-        android:text="Valor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/txtListaBase"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="18dp"
-        android:id="@+id/txtValor"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="18dp" />
-
-    <TextView
-        android:text="@string/UnidadeMonet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtUnMonet"
-        android:layout_marginEnd="19dp"
-        android:layout_alignBaseline="@+id/txtValor"
-        android:layout_alignBottom="@+id/txtValor"
-        android:layout_toStartOf="@+id/txtValor"
-        android:layout_marginRight="19dp"
-        android:layout_toLeftOf="@+id/txtValor" />
 
     <TextView
         android:text="ID"
@@ -46,19 +24,6 @@
         android:layout_alignLeft="@+id/txtListaBase" />
 
     <TextView
-        android:text="Data da Compra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="12dp"
-        android:id="@+id/txtDataCompra"
-        android:textSize="18sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="11dp"
-        android:layout_alignParentLeft="true" />
-
-    <TextView
         android:text="Lista Base"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,5 +40,40 @@
         android:layout_alignStart="@+id/txtDataCompra"
         android:id="@+id/txvModoCompra"
         android:visibility="gone"/>
+
+    <TextView
+        android:text="Valor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="34dp"
+        android:id="@+id/txtValor"
+        android:layout_marginRight="34dp"
+        android:layout_alignBaseline="@+id/txtListaBase"
+        android:layout_alignBottom="@+id/txtListaBase"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="@string/UnidadeMonet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtUnMonet"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_alignBaseline="@+id/txtDataCompra"
+        android:layout_alignBottom="@+id/txtDataCompra"
+        android:layout_toLeftOf="@+id/txtValor"
+        android:layout_toStartOf="@+id/txtValor" />
+
+    <TextView
+        android:text="Data da Compra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:id="@+id/txtDataCompra"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/txtIDListaBase"
+        android:layout_toEndOf="@+id/txtIDListaBase" />
 
 </RelativeLayout>
