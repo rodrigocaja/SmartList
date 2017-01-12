@@ -26,11 +26,11 @@ import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SelectionarListaFragment extends Fragment {
+public class SelecionarListaFragment extends Fragment {
     private SQLiteDatabase db = null;
     private SimpleCursorAdapter adt = null;
 
-    public SelectionarListaFragment() {
+    public SelecionarListaFragment() {
         // Required empty public constructor
     }
 

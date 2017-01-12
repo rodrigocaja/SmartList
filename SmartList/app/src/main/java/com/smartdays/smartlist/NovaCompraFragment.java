@@ -39,7 +39,7 @@ public class NovaCompraFragment extends Fragment {
                     args.putString("tipoCompra", "A");
 
                     MainActivity activity = (MainActivity) getActivity();
-                    activity.callSelectionarListaFragment(args);
+                    activity.callSelecionarListaFragment(args);
                 }
             });
 
@@ -52,7 +52,7 @@ public class NovaCompraFragment extends Fragment {
                     args.putString("tipoCompra", "B");
 
                     MainActivity activity = (MainActivity) getActivity();
-                    activity.callSelectionarListaFragment(args);
+                    activity.callSelecionarListaFragment(args);
                 }
             });
 
@@ -66,7 +66,7 @@ public class NovaCompraFragment extends Fragment {
                     args.putString("tipoCompra", "C");
 
                     MainActivity activity = (MainActivity) getActivity();
-                    activity.callSelectionarListaFragment(args);
+                    activity.callSelecionarListaFragment(args);
                 }
             });
 

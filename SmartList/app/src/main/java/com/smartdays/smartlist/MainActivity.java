@@ -15,8 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -173,9 +171,9 @@ public class MainActivity extends AppCompatActivity
         fragmentsCallInterface(nivel, fragment);
     }
 
-    public void callSelectionarListaFragment(Bundle args) {
+    public void callSelecionarListaFragment(Bundle args) {
         String nivel = "selecionarLista";
-        SelectionarListaFragment fragment = new SelectionarListaFragment();
+        SelecionarListaFragment fragment = new SelecionarListaFragment();
         fragment.setArguments(args);
 
         fragmentsCallInterface(nivel, fragment);
