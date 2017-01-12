@@ -69,7 +69,7 @@ public class SelectionarListaFragment extends Fragment {
             ListView ltwSelectList = (ListView) rootView.findViewById(R.id.ltwSelectList);
 
             ltwSelectList.setAdapter(adt);
-            cursor.close();
+
 
             //Seleção de registro no listview
             ltwSelectList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -119,7 +119,6 @@ public class SelectionarListaFragment extends Fragment {
                         String acao = "Inseriu o registro no. " + seqCursor.getString(seqCursor.getColumnIndex("seq"));
                         log.gravaLog(db, tabela, acao);
 
-                        seqCursor.close();
                         //MainActivity activity = (MainActivity) getActivity();
                         //activity.
                     } else {

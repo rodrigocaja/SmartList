@@ -97,7 +97,6 @@ public class ListaItemFragment extends Fragment {
 
             //Registrando para o menu de contexto
             registerForContextMenu(ltwItensLista);
-            cursor.close();
         }
 
         return rootView;
@@ -143,6 +142,5 @@ public class ListaItemFragment extends Fragment {
             mArrayList.add(cursor.getString(cursor.getColumnIndex("_id")));
         }
         Log.v("DEBUG", produto);
-        cursor.close();
     }
 }

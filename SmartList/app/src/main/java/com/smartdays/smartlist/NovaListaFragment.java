@@ -75,8 +75,6 @@ public class NovaListaFragment extends Fragment {
                         args.putString("idLista", retornoCursor.getString(retornoCursor.getColumnIndex("seq")));
                         args.putString("nomeLista", txtListName.getText().toString());
 
-                        retornoCursor.close();
-
                         MainActivity activity = (MainActivity) getActivity();
                         activity.callListaItemFragment(args);
 

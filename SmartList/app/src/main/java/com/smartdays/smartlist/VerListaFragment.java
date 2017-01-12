@@ -81,7 +81,7 @@ public class VerListaFragment extends Fragment {
                 }
             });
 
-            cursor.close();
+
         }
 
         return rootView;
@@ -129,7 +129,7 @@ public class VerListaFragment extends Fragment {
             // The Cursor is now set to the right position
             mArrayList.add(cursor.getString(cursor.getColumnIndex("_id")));
         }
-        cursor.close();
+
         Log.v("DEBUG", id);
     }
 }
