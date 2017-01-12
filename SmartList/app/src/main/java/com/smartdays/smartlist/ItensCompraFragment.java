@@ -8,12 +8,16 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
@@ -24,6 +28,7 @@ import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 public class ItensCompraFragment extends Fragment {
     private SQLiteDatabase db = null;
     private SimpleCursorAdapter adt = null;
+    private ArrayList<String> mArrayList = new ArrayList<String>();
 
     public ItensCompraFragment() {
         // Required empty public constructor
@@ -62,6 +67,14 @@ public class ItensCompraFragment extends Fragment {
             ListView ltwItensCompra = (ListView) rootView.findViewById(R.id.ltwItensCompra);
             ltwItensCompra.setAdapter(adt);
 
+            registerForContextMenu(ltwItensCompra);
+
+            mArrayList.clear();
+            for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+                // The Cursor is now set to the right position
+                mArrayList.add(cursor.getString(cursor.getColumnIndex("_id")));
+            }
+
             //Seleção de registro no listview
             ltwItensCompra.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -82,6 +95,52 @@ public class ItensCompraFragment extends Fragment {
         }
 
         return rootView;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+        if (v.getId() == R.id.ltwItensCompra) {
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+            menu.setHeaderTitle(getResources().getString(R.string.optionsDesc));
+            menu.add(0, 1, 1, getResources().getString(R.string.contextRemoveCart));
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        //int menuItemIndex = item.getItemId();
+        String chave = mArrayList.get(info.position);
+
+        deleteItem(chave);
+        return true;
+    }
+
+    public void deleteItem(String id) {
+        String[] deleteParm = new String[]{id, getArguments().getString("compraID")};
+        db.delete("compra_item", "produto = ? AND compra = ?", deleteParm);
+
+
+
+        String[] busca = new String[]{getArguments().getString("compraID")};
+        final Cursor cursor = db.rawQuery("select compra_item.produto as _id, produto.produto_desc as ProdDesc, '' as categ from compra_item inner join produto on compra_item.produto = produto._id" +
+                " where compra_item.compra = ? group by compra_item.produto order by compra_item._id",busca);
+        adt.changeCursor(cursor);
+
+        //Log do sistema
+        LogSis log = new LogSis();
+        String tabela = "compra_item";
+        String acao = "Removeu o produto " + id + " da compra " + getArguments().getString("compraID");
+        log.gravaLog(db, tabela, acao);
+
+
+        mArrayList.clear();
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            // The Cursor is now set to the right position
+            mArrayList.add(cursor.getString(cursor.getColumnIndex("_id")));
+        }
+
+        Log.v("DEBUG", id);
     }
 
 }
