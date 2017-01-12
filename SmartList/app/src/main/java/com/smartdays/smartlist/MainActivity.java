@@ -1,5 +1,6 @@
 package com.smartdays.smartlist;
 
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,11 +14,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private SQLiteDatabase db = null;
+
 
     public static final String TAG = "MainActivity";
 
@@ -64,14 +68,23 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             int count = getSupportFragmentManager().getBackStackEntryCount();
+            String fragmentName = getSupportFragmentManager().getBackStackEntryAt(count-1).getName();
             Log.v("DEBUG", String.valueOf(count));
-            //String nivelAtual = getSupportFragmentManager().getBackStackEntryAt(count-1).getName();
-            if (count == 1) {
+            Log.v("DEBUG",fragmentName);
+
+
+            Resources res = getResources();
+            String[] firstLevelFragments = res.getStringArray(R.array.level1_fragments);
+            if (fragmentName == "main") {
                 //super.onBackPressed();
                 finish();
             } else {
-                getSupportFragmentManager().popBackStack();
-
+                if (Arrays.asList(firstLevelFragments).contains(fragmentName)){
+                    getSupportFragmentManager().popBackStack("main", 0);
+                    Log.v("DEBUG", "achou o fragmento");
+                } else {
+                    getSupportFragmentManager().popBackStack();
+                }
             }
         }
     }

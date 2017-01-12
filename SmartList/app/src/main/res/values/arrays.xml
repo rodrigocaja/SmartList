@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="level1_fragments">
+        <item>novaLista</item>
+        <item>verLista</item>
+        <item>novaCompra</item>
+        <item>verCompras</item>
+    </string-array>
+</resources>
