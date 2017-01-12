@@ -125,6 +125,12 @@ public class ListaItemFragment extends Fragment {
         String[] deleteParm = new String[]{produto, getArguments().getString("idLista")};
         db.delete("lista_item", "produto = ? and lista = ?", deleteParm);
 
+        //Log do sistema
+        LogSis log = new LogSis();
+        String tabela = "lista_item";
+        String acao = "Removeu o produto " + produto + " da lista " + getArguments().getString("idLista");
+        log.gravaLog(db, tabela, acao);
+
         String[] busca = new String[]{getArguments().getString("idLista")};
         Cursor cursor = db.rawQuery("select lista_item.produto as _id, produto.produto_desc as ProdDesc, '' as categ from lista_item inner join produto on lista_item.produto = produto._id" +
                 " where lista_item.lista = ? order by lista_item._id",busca);

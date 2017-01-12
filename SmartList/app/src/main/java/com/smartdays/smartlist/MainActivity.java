@@ -120,7 +120,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_newShop) {
 
         } else if (id == R.id.nav_openShop) {
+            nivel = "verCompras";
+            VerComprasFragment fragment = new VerComprasFragment();
 
+            fragmentsCallInterface(nivel, fragment);
         } else if (id == R.id.nav_stepbystep) {
             CargaSQLite cargaSQLite = new CargaSQLite();
             cargaSQLite.carga(getBaseContext());
