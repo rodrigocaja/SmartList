@@ -22,10 +22,6 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private SQLiteDatabase db = null;
 
-
-    public static final String TAG = "MainActivity";
-
-    int closeCount = 0;
     NavigationView navigationView = null;
     Toolbar toolbar = null;
 
@@ -81,7 +77,6 @@ public class MainActivity extends AppCompatActivity
             } else {
                 if (Arrays.asList(firstLevelFragments).contains(fragmentName)){
                     getSupportFragmentManager().popBackStack("main", 0);
-                    Log.v("DEBUG", "achou o fragmento");
                 } else {
                     getSupportFragmentManager().popBackStack();
                 }
@@ -187,10 +182,19 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void callListaCompraFragment(Bundle args) {
-        String nivel = "listaCompraFragment";
+        String nivel = "listaCompra";
         ListaCompraFragment fragment = new ListaCompraFragment();
         fragment.setArguments(args);
 
         fragmentsCallInterface(nivel, fragment);
+    }
+
+    public void callItensCompraFragment(Bundle args) {
+        String nivel = "itensCompra";
+        ItensCompraFragment fragment = new ItensCompraFragment();
+        fragment.setArguments(args);
+
+        fragmentsCallInterface(nivel, fragment);
+
     }
 }

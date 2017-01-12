@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.smartdays.smartlist.ItensCompraFragment">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txtTitleItensCompra"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/ltwItensCompra" />
+
+    <TextView
+        android:text="@string/txtShoppingCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTitleItensCompra"
+        android:layout_alignBottom="@+id/txtTotal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/txtDescTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:id="@+id/txtDescTotalCart"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="67dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/txtTitleItensCompra"
+        android:layout_toEndOf="@+id/txtTitleItensCompra" />
+
+    <TextView
+        android:text="9,99"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTotal"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp"
+        android:layout_alignBaseline="@+id/txtDescTotalCart"
+        android:layout_alignBottom="@+id/txtDescTotalCart"
+        android:layout_toRightOf="@+id/txtDescTotalCart"
+        android:layout_toEndOf="@+id/txtDescTotalCart" />
+
+</RelativeLayout>

@@ -90,12 +90,13 @@ public class ListaCompraFragment extends Fragment {
             imgCart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    /*Intent itCall = new Intent(getBaseContext(), ItensCompraActivity.class);
-                    itCall.putExtra("compraID",callIT.getStringExtra("idCompra"));
-                    itCall.putExtra("modo_compra", tipocompra);
-                    itCall.putExtra("listaID", callIT.getStringExtra("idLista"));
+                    Bundle args = new Bundle();
+                    args.putString("compraID", getArguments().getString("idCompra"));
+                    args.putString("modo_compra", tipocompra);
+                    args.putString("listaID", getArguments().getString("idLista"));
 
-                    startActivity(itCall);*/
+                    MainActivity activity = (MainActivity) getActivity();
+                    activity.callItensCompraFragment(args);
                 }
             });
 
