@@ -69,6 +69,7 @@ public class NovaCompraFragment extends Fragment {
                     activity.callSelectionarListaFragment(args);
                 }
             });
+
         }
 
         return rootView;

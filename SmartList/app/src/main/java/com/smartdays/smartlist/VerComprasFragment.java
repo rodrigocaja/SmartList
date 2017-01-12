@@ -79,6 +79,7 @@ public class VerComprasFragment extends Fragment {
                     startActivity(it);*/
                 }
             });
+            cursor.close();
         }
 
         return rootView;
@@ -128,5 +129,6 @@ public class VerComprasFragment extends Fragment {
             mArrayList.add(cursor.getString(cursor.getColumnIndex("_id")));
         }
         Log.v("DEBUG", id);
+        cursor.close();
     }
 }

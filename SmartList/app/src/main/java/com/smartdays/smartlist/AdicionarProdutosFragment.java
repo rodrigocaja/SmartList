@@ -157,7 +157,7 @@ public class AdicionarProdutosFragment extends Fragment {
                     }
                 }
             });
-
+            cursor.close();
         }
 
         return rootView;
